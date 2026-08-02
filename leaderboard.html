@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" href="result.css">
+
+</head>
+
+<body>
+
+<div class="result-box">
+
+<h1>🏆 Leaderboard</h1>
+
+<table border="1" width="100%" id="table">
+
+<tr>
+
+<th>Name</th>
+
+<th>Correct</th>
+
+<th>Wrong</th>
+
+<th>Date</th>
+
+</tr>
+
+</table>
+
+</div>
+
+<script>
+
+let history=JSON.parse(localStorage.getItem("history"))||[];
+
+history.sort((a,b)=>b.correct-a.correct);
+
+let table=document.getElementById("table");
+
+history.forEach(x=>{
+
+table.innerHTML+=`
+
+<tr>
+
+<td>${x.player}</td>
+
+<td>${x.correct}</td>
+
+<td>${x.wrong}</td>
+
+<td>${x.date}</td>
+
+</tr>
+
+`;
+
+});
+
+</script>
+
+</body>
+
+</html>
